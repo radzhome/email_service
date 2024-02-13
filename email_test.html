@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form id="emailForm" action="http://localhost:8000/email" method="post">
+    <input type="text" name="subject" placeholder="Subject" required><br>
+    <input type="text" name="from_user" placeholder="Your Name" required><br>
+    <input type="email" name="from_user_email" placeholder="Your Email" required><br>
+    <textarea name="message" placeholder="Message" required></textarea><br>
+    <input type="submit" value="Send Email">
+</form>
+
+
+<!-- select subject -->
+<form id="emailForm" action="http://localhost:8000/email" method="post">
+    <label for="subject">Subject:</label>
+    <select name="subject" required>
+        <option value="" disabled selected>Select a subject</option>
+        <option value="Inquire about Wills">Inquire about Wills</option>
+        <option value="Legal Consultation">Legal Consultation</option>
+        <option value="Family Law Matter">Family Law Matter</option>
+        <option value="Other">Other</option>
+        <!-- Add more options as needed -->
+    </select><br>
+
+    <label for="from_user">Your Name:</label>
+    <input type="text" name="from_user" placeholder="Your Name" required><br>
+
+    <label for="from_user_email">Your Email:</label>
+    <input type="email" name="from_user_email" placeholder="Your Email" required><br>
+
+    <label for="message">Message:</label>
+    <textarea name="message" placeholder="Message" required></textarea><br>
+
+    <input type="submit" value="Send Email">
+</form>
+
+<!-- hidden subject -->
+<form id="emailForm" action="http://localhost:8000/email" method="post">
+    <input type="hidden" name="subject" value="A message from your site">
+
+    <label for="from_user">Your Name:</label>
+    <input type="text" name="from_user" placeholder="Your Name" required><br>
+
+    <label for="from_user_email">Your Email:</label>
+    <input type="email" name="from_user_email" placeholder="Your Email" required><br>
+
+    <label for="message">Message:</label>
+    <textarea name="message" placeholder="Message" required></textarea><br>
+
+    <input type="submit" value="Send Email">
+</form>
+
+
+</body>
+</html>
