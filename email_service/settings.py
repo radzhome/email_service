@@ -55,6 +55,18 @@ LOGGING = {
         'handlers': ['console'],
         'level': 'INFO',  # Set the desired logging level here
     },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    },
 }
 
 # Grab local settings
