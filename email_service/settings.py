@@ -10,7 +10,7 @@ INSTALLED_APPS = (
 ROOT_URLCONF = 'email_service.urls'
 
 MY_DOMAINS = ['wojciklaw.ca', 'sandrako.ca', 'infinite-auto.ca']
-
+ALLOWED_HOSTS = MY_DOMAINS
 
 # Generate CORS_ALLOWED_ORIGINS with http, https schemes and www.
 CORS_ALLOWED_ORIGINS = []

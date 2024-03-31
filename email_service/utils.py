@@ -45,5 +45,5 @@ def send_gmail(subject, message, send_to, reply_to, sent_from=GOOGLE_EMAIL, app_
     smtpserver.sendmail(sent_from, send_to, email_text)
 
     smtpserver.close()
-    logging.info("send_gmail email sent to %s", send_to)
+    logging.info(f"send_gmail email sent_to={send_to}, sent_from={sent_from}, subject={subject}")
     return True
