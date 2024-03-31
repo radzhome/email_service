@@ -42,8 +42,17 @@ def send_gmail(subject, message, send_to, reply_to, sent_from=GOOGLE_EMAIL, app_
     # Convert the MIMEMultipart object to a string
     email_text = msg.as_string()
 
-    smtpserver.sendmail(sent_from, send_to, email_text)
+    # smtpserver.sendmail(sent_from, send_to, email_text)
+    try:
+        failed_recipients = smtpserver.sendmail(sent_from, send_to, email_text)
+        if failed_recipients:
+            logging.warning(f"Failed to deliver email to: {failed_recipients}")
+    except Exception as e:
+        logging.error(f"Error sending email: {e}")
+        return False
+    finally:
+        smtpserver.close()
 
-    smtpserver.close()
+    # smtpserver.close()
     logging.info(f"send_gmail email sent_to={send_to}, sent_from={sent_from}, subject={subject}")
     return True
