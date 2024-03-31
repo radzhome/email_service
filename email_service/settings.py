@@ -21,7 +21,8 @@ for domain in MY_DOMAINS:
     www_https_origin = f'https://www.{domain}'
     CORS_ALLOWED_ORIGINS.extend([http_origin, https_origin, www_http_origin, www_https_origin])
 
-# CORS_ALLOWED_ORIGINS += ['http://localhost:63342', ]  # For testing
+if DEBUG:
+    CORS_ALLOWED_ORIGINS += ['http://localhost:63342', ]  # For testing
 
 CORS_ALLOW_METHODS = [
     # 'DELETE',

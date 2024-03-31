@@ -9,7 +9,7 @@ fi
 
 # Create virtualenv for the project, pip install all the things
 VIRTUALENV_DIR=.venv
-virtualenv $VIRTUALENV_DIR --python=python3.12
+virtualenv $VIRTUALENV_DIR --python=python3
 . $VIRTUALENV_DIR/bin/activate
 pip install -r requirements.txt
 echo ""

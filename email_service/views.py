@@ -2,7 +2,6 @@ import json
 import logging
 from urllib.parse import urlparse
 
-
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
@@ -12,6 +11,7 @@ from email_service.utils import send_gmail
 
 ALLOWED_USER_AGENTS = settings.ALLOWED_USER_AGENTS
 ORIGIN_TO_EMAIL = settings.ORIGIN_TO_EMAIL
+SEND_TY_EMAIL = settings.SEND_TY_EMAIL
 
 @csrf_exempt  # Only use csrf_exempt for demonstration purposes, consider using CSRF protection in production.
 @require_POST
@@ -38,14 +38,16 @@ def post_email(request):
                 logging.error("view.post_email: Invalid request. request.body=%s...", request.body[:200])
                 return HttpResponse("Invalid request", status=400)
 
-        # Modify the message to include the reply-to information
-        # reply_to = from_user_email  # Set the reply-to address
-
         # Send the email
         parsed_origin = urlparse(origin)
         origin_domain = parsed_origin.netloc
         send_to = ORIGIN_TO_EMAIL.get(origin_domain, {}).get('to-emails')
         send_gmail(subject=subject, message=message, reply_to=from_user_email, send_to=send_to)
+
+        # if SEND_TY_EMAIL:
+        #     message = "We will get back to you soon."
+        #     subject = "Thank you for your message"
+        #     send_gmail(subject=subject, message=message, reply_to=send_to, send_to=from_user_email)
 
         # Do something with from_user and message
         return HttpResponse("Done!")
